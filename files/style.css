@@ -1,0 +1,262 @@
+/* ---------- Variables : couleurs et polices ---------- */
+:root {
+  --nuit: #0f1b33;
+  --corail: #f2573a;
+  --lien: #b8321a;
+  --fond: #f5f6fb;
+  --blanc: #ffffff;
+  --gris: #56617d;
+  --trait: #d9deea;
+  --pale: #e9edf8;
+  --marqueur: #ffe27a;
+
+  --titres: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --texte: "DM Sans", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--nuit);
+  font-family: var(--texte);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 { font-family: var(--titres); line-height: 1.15; margin: 0 0 0.6rem; }
+h1 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 1.2rem; }
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.05rem; }
+h3.sub { margin-top: 2.4rem; }
+
+p { margin: 0 0 1rem; max-width: 65ch; }
+
+a { color: var(--lien); }
+a:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--corail);
+  outline-offset: 2px;
+}
+
+/* ---------- Structure : barre latérale + contenu ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 2rem 1.5rem;
+  background: var(--nuit);
+  color: var(--blanc);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nom {
+  font-family: var(--titres);
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  margin: 0;
+}
+.role { color: #aab4d0; font-size: 0.95rem; margin: 0.4rem 0 2rem; }
+
+.sidebar nav ol { list-style: none; margin: 0; padding: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 0.4rem 0;
+  color: #d6dcf0;
+  text-decoration: none;
+  border-bottom: 1px solid #243457;
+}
+.sidebar nav a span { color: var(--corail); font-family: var(--titres); margin-right: 0.6rem; }
+.sidebar nav a:hover { color: var(--blanc); }
+
+.sidebar-contact { font-size: 0.95rem; color: #aab4d0; margin: 0; }
+.sidebar-contact a { color: var(--blanc); }
+
+/* ---------- Sections ---------- */
+main section {
+  padding: 4rem clamp(1.2rem, 5vw, 4rem);
+  max-width: 58rem;
+}
+
+.etiquette {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  padding: 0.1rem 0.7rem;
+  background: var(--corail);
+  color: var(--nuit);
+  font-family: var(--titres);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.intro { color: var(--gris); }
+
+/* ---------- Accueil ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.hero-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  background: var(--nuit);
+  color: var(--blanc);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover { background: var(--lien); }
+
+.btn-clair {
+  background: transparent;
+  color: var(--nuit);
+  border: 2px solid var(--nuit);
+}
+.btn-clair:hover { background: var(--nuit); color: var(--blanc); }
+
+/* L'étiquette de prix : clin d'œil à mes boutiques en ligne */
+.tag {
+  position: relative;
+  padding: 1.8rem 1.6rem 1.6rem 3.4rem;
+  background: var(--blanc);
+  border-radius: 0.4rem 1.8rem 1.8rem 0.4rem;
+  box-shadow: 0 0.5rem 0 var(--corail);
+  transform: rotate(-3deg);
+}
+.tag::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--fond);
+  border: 2px solid var(--nuit);
+  transform: translateY(-50%);
+}
+.tag p { margin: 0 0 0.3rem; }
+.tag-haut { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; color: var(--lien); }
+.tag-nom { font-family: var(--titres); font-weight: 700; font-size: 1.6rem; }
+.tag-bas { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 2px dashed var(--trait); color: var(--gris); font-size: 0.95rem; }
+
+/* ---------- Parcours ---------- */
+.timeline {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0 0 0 1.8rem;
+  border-left: 3px solid var(--nuit);
+}
+.timeline li { position: relative; margin-bottom: 1.8rem; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -2.45rem;
+  top: 0.35rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--corail);
+  border: 3px solid var(--fond);
+}
+.meta { color: var(--gris); font-size: 0.95rem; margin-bottom: 0.4rem; }
+
+/* ---------- Compétences ---------- */
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.2rem;
+}
+.carte { background: var(--blanc); padding: 1.3rem 1.4rem; border-top: 6px solid var(--nuit); }
+.carte p { margin-bottom: 0.4rem; }
+.niveau { color: var(--gris); font-size: 0.95rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0; list-style: none; }
+.chips li { padding: 0.2rem 0.8rem; background: var(--pale); border-radius: 999px; font-size: 0.95rem; }
+
+/* ---------- Réalisations ---------- */
+.projet {
+  margin-bottom: 1.6rem;
+  padding: 1.6rem;
+  background: var(--blanc);
+  border: 1px solid var(--trait);
+  border-left: 8px solid var(--corail);
+}
+
+dl { margin: 1rem 0 0; }
+dt { margin-top: 1rem; font-weight: 700; }
+dd { margin: 0.2rem 0 0; max-width: 65ch; }
+
+/* ---------- Veille ---------- */
+.liste { padding-left: 1.2rem; max-width: 65ch; }
+.liste li { margin-bottom: 0.5rem; }
+
+.etapes { max-width: 65ch; padding-left: 1.3rem; }
+.etapes li { margin-bottom: 0.4rem; }
+
+.chiffres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.chiffre { padding: 1.2rem; background: var(--blanc); border-top: 6px solid var(--corail); }
+.chiffre strong { display: block; font-family: var(--titres); font-size: 2.8rem; line-height: 1; }
+.chiffre p { margin: 0.5rem 0 0; font-size: 0.95rem; }
+.chiffre .source { color: var(--gris); font-size: 0.85rem; }
+
+.captures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.2rem;
+  margin: 1.2rem 0;
+}
+.captures figure { margin: 0; }
+.captures img { width: 100%; height: auto; border: 1px solid var(--trait); border-radius: 0.5rem; }
+.captures figcaption { margin-top: 0.4rem; color: var(--gris); font-size: 0.9rem; }
+
+.note { color: var(--gris); margin-top: 1rem; }
+
+/* ---------- Tableaux ---------- */
+.table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+
+table { width: 100%; border-collapse: collapse; background: var(--blanc); font-size: 0.98rem; }
+th, td { padding: 0.7rem 0.9rem; border: 1px solid var(--trait); text-align: left; vertical-align: top; }
+th { background: var(--nuit); color: var(--blanc); font-weight: 600; }
+
+/* ---------- Pastilles « à compléter » (à supprimer avant le rendu) ---------- */
+.todo { background: var(--marqueur); color: var(--nuit); padding: 0 0.25rem; }
+
+/* ---------- Pied de page ---------- */
+.pied { padding: 1.5rem clamp(1.2rem, 5vw, 4rem); color: var(--gris); font-size: 0.9rem; }
+.pied p { margin: 0; max-width: none; }
+
+/* ---------- Tablette et mobile ---------- */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; gap: 1.2rem; }
+  .role { margin-bottom: 1rem; }
+  .sidebar nav ol { display: flex; flex-wrap: wrap; gap: 0 1.2rem; }
+  .sidebar nav a { border-bottom: none; }
+  .hero { grid-template-columns: 1fr; min-height: 0; gap: 2rem; }
+  .tag { transform: none; }
+}
